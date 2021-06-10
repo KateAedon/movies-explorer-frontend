@@ -27,8 +27,20 @@ function AboutProject(props) {
                     </p>
                 </article>
             </div>
-
-
+            <div className='about-project_duration_container'>
+                <div className='about-project_duration about-project_duration-backend'>
+                    1 неделя
+                </div>
+                <div className='about-project_duration about-project_duration-frontend'>
+                    4 недели
+                </div>
+                <div className='about-project_duration_title about-project_duration_title-backend'>
+                    Back-end
+                </div>
+                <div className='about-project_duration_title about-project_duration_title-frontend'>
+                    Front-end
+                </div>
+            </div>
         </header>
     );
 }
