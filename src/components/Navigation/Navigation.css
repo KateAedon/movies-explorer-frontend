@@ -1,0 +1,22 @@
+.navigation {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-right: 70px;
+}
+
+.navigation_link {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.navigation_link:first-of-type {
+    margin-right: 50px;
+}
+
+.navigation_link:hover {
+    background-color: #3DDC84;
+    color: #000000;
+    padding: 8px 20px;
+    border-radius: 3px;
+}

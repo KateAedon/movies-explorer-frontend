@@ -1,11 +1,24 @@
 import React from 'react';
+import Hero from '../Hero/Hero';
+import Promo from '../Promo/Promo';
+import NavTab from '../NavTab/NavTab';
+import AboutProject from '../AboutProject/AboutProject';
+import Techs from '../Techs/Techs';
+import AboutMe from '../AboutMe/AboutMe';
+import Portfolio from '../Portfolio/Portfolio';
 import './Main.css';
 
-function Main(props) {
+function Main() {
     return (
-        <main className='main'>
-<h1>main</h1>
-        </main>
+        <div className='main'>
+            {/* <Hero />
+            <Promo />
+            <NavTab />
+            <AboutProject />
+            <Techs />
+            <AboutMe />
+            <Portfolio /> */}
+        </div>
     );
 }
 
