@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import Promo from '../Promo/Promo';
 import NavTab from '../NavTab/NavTab';
 import './App.css';
+import AboutProject from '../AboutProject/AboutProject';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Header />
         <Promo />
         <NavTab />
+        <AboutProject />
         <Main />
       </Route>
       
