@@ -4,8 +4,12 @@ import Main from '../Main/Main';
 import Header from '../Header/Header';
 import Promo from '../Promo/Promo';
 import NavTab from '../NavTab/NavTab';
-import './App.css';
 import AboutProject from '../AboutProject/AboutProject';
+import Techs from '../Techs/Techs';
+import AboutMe from '../AboutMe/AboutMe';
+import './App.css';
+import Portfolio from '../Portfolio/Portfolio';
+import Footer from '../Footer/Footer';
 
 function App() {
   return (
@@ -15,6 +19,10 @@ function App() {
         <Promo />
         <NavTab />
         <AboutProject />
+        <Techs />
+        <AboutMe />
+        <Portfolio />
+        <Footer />
         <Main />
       </Route>
       
