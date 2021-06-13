@@ -12,10 +12,15 @@ import Portfolio from '../Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 
 function App() {
+
+  const isloggedIn = true; //change to false!
+
+  
+
   return (
     <div className="App">
       <Route exact path ='/'>
-        <Header />
+        <Header isLoggedIn={isloggedIn}/>
         <Promo />
         <NavTab />
         <AboutProject />

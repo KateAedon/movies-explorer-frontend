@@ -1,1 +1,5 @@
 @import url(../src/vendor/normalize.css);
+
+html {
+    background-color: #202020;
+}
