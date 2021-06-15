@@ -1,11 +1,17 @@
 import React from 'react';
+import MoviesCard from '../MoviesCard/MoviesCard';
 import './MoviesCardList.css';
 
 function MoviesCardList() {
     return (
-        <div className='movies_card_list'>
- 
-        </div>
+        <section className='movies-card-list'>
+            <ul className='movies-card-list_list'>
+                <MoviesCard />
+                <MoviesCard />
+                <MoviesCard />
+                <MoviesCard />
+            </ul>
+        </section>
     );
 }
 

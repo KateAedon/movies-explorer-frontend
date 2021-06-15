@@ -1,4 +1,5 @@
 import React from 'react';
+import LoadMoreButton from '../LoadMoreButton/LoadMoreButton';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import SearchForm from '../SearchForm/SearchForm';
@@ -10,6 +11,7 @@ function Movies() {
             <SearchForm />
             <Preloader />
             <MoviesCardList />
+            <LoadMoreButton />
         </div>
     );
 }

@@ -5,6 +5,9 @@ import Header from '../Header/Header';
 import './App.css';
 import Footer from '../Footer/Footer';
 import Movies from '../Movies/Movies';
+import Profile from '../Profile/Profile';
+import Register from '../Register/Register';
+import PageNotFound from '../PageNotFound/PageNotFound';
 
 function App() {
 
@@ -15,10 +18,13 @@ function App() {
   return (
     <div className="App">
       <Route exact path ='/'>
-        <Header isLoggedIn={isloggedIn}/>
-        <Movies />
-          {/* <Main /> */}
-        <Footer />
+      
+        <Register />
+        {/*<PageNotFound />
+        <Header isLoggedIn={isloggedIn}/>*
+        {/* <Movies />
+            <Main /> 
+        <Footer />*/}
       </Route>
       
       

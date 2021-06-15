@@ -1,0 +1,8 @@
+.remove-movie_button {
+    width: 21px;
+    height: 21px;
+    background-image: url('../../images/remove-movie_button.svg');
+    position: absolute;
+    top: 14px;
+    right: 14px;
+}

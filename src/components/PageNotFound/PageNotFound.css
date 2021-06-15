@@ -1,0 +1,32 @@
+.page-not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.page-not-found_title {
+    margin: 0;
+    font-size: 140px;
+    line-height: 169px;
+    font-weight: 400;
+}
+
+.page-not-found_error {
+    margin: 0;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.page-not-found_button {
+    font-size: 14px;
+    line-height: 17px;
+    border: none;
+    margin: 0;
+    padding: 0;
+    padding-top: 184px;
+    background-color: transparent;
+    color: #4285F4;
+}

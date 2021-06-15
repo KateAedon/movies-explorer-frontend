@@ -1,4 +1,5 @@
 import React from 'react';
+import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
 function SearchForm() {
@@ -16,6 +17,11 @@ function SearchForm() {
                 <span className='search-form_error'></span>
                 <button className='search-form_button' type="submit">Найти</button>
             </div>
+            <div className='search-form_short-movies_container'>
+                <FilterCheckbox />
+                <p className='search-from_short-movies_heading'>Короткометражки</p>
+            </div>
+            <hr className='search-form_hr'></hr>
         </form>
     );
 }
