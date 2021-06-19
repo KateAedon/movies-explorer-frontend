@@ -96,3 +96,17 @@
     display: flex;
     align-items: center;
 }
+
+@media screen and (max-width: 400px) {
+    .login_container {
+        max-width: 260px;
+    }
+
+    .login-form_login {
+        font-size: 12px;
+    }
+
+    .login_form_register-button {
+        font-size: 12px;
+    }
+}

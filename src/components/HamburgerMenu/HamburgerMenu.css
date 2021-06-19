@@ -62,3 +62,10 @@
     border: transparent;
     cursor: pointer;
 }
+
+@media screen and (max-width: 340px) {
+    .hamburger-menu {
+        padding-top: 144px;
+        padding-bottom: 48px;
+    }
+}
