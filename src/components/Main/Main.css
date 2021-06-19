@@ -33,3 +33,10 @@
     line-height: 20px;
     font-weight: normal;
 }
+
+@media screen and (max-width: 400px) {
+    .heading {
+        font-size: 31px;
+        line-height: 39px;
+    }
+  }

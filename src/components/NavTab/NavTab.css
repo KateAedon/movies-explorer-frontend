@@ -25,6 +25,18 @@
 .nav-tab_link {
     color: #FFFFFF;
     text-decoration: underline;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-decoration-line: underline;
+    color: #FFFFFF;
 }
+
+@media screen and (max-width: 400px) {
+    .nav-tab_link {
+        font-size: 11px;
+    }
+  }

@@ -9,15 +9,24 @@ function Portfolio(props) {
             <h3 className='portfolio_header'>Портфолио</h3>
             <ul className='portfolio_list'>
                 <il className='portfolio_list_item'>
-                    <Link to='/' className='portfolio_list_item_link'>Статичный сайт</Link>
-                    <hr className='portfolio_list_hr'></hr>
+                    <a href='https://kateaedon.github.io/russian-travel/' className='portfolio_list_item_link'>
+                        Статичный сайт
+                        <span className='portfolio_list_item_arrow'>&#8599;</span>
+                    </a>
+  
                 </il>
                 <il className='portfolio_list_item'>
-                    <Link to='/' className='portfolio_list_item_link'>Адаптивный сайт</Link>
-                    <hr className='portfolio_list_hr' ></hr>
+                    <a href='https://github.com/KateAedon/mesto-react' className='portfolio_list_item_link'>
+                        Адаптивный сайт
+                        <span className='portfolio_list_item_arrow'>&#8599;</span>
+                    </a>
+
                 </il>
                 <il className='portfolio_list_item'>
-                    <Link to='/' className='portfolio_list_item_link'>Одностраничное приложение</Link>
+                    <a href='https://github.com/KateAedon/express-mesto' className='portfolio_list_item_link'>
+                        Одностраничное приложение
+                        <span className='portfolio_list_item_arrow'>&#8599;</span>
+                    </a>
                 </il>
             </ul>
         </div>

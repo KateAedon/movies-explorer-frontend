@@ -7,13 +7,13 @@ function NavTab(props) {
         <section className='nav-bar'>
             <ul  className='nav-tab'>
                 <li className='nav-tab_item'>
-                    <Link to='/about-project' className='nav-tab_link'>О проекте</Link>
+                    <a href='/#about-project_anchor' className='nav-tab_link'>О проекте</a>
                 </li>
                 <li className='nav-tab_item'>
-                    <Link to='/techs' className='nav-tab_link'>Технологии</Link>
+                    <a href='/#techs_anchor' className='nav-tab_link'>Технологии</a>
                 </li>
                 <li className='nav-tab_item'>
-                    <Link to='/about-me' className='nav-tab_link'>Студент</Link>
+                    <a href='/#about-me_anchor' className='nav-tab_link'>Студент</a>
                 </li>
             </ul>
         </section>

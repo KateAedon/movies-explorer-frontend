@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import Logo from '../UI/Logo/Logo';
 import './Register.css';
 
@@ -35,7 +36,7 @@ function Register() {
                     minLength='2'
                     maxLength='30'
                     placeholder='Email'
-                    value={''}
+                    value={'Email@mail.mail'}
                     type='email'
                     autoComplete='off'
                 />
@@ -57,10 +58,10 @@ function Register() {
                 />
                 
             </label>
-                <button className='register-form_submit-button' type='button'>Зарегистрироваться</button>
+                <button className='register-form_submit-button' type='submit'>Зарегистрироваться</button>
                 <div className='register-form_login-container'>
                     <p className='register-form_login'>Уже зарегистрированы? </p> 
-                    <button className='register_form_login-button' type='button'>Войти</button>
+                    <Link to='/signin' className='register_form_login-button'> Войти</Link>
                 </div> 
                 </form>
             </div>

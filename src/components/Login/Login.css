@@ -1,10 +1,10 @@
-.register {
+.login {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.register_container {
+.login_container {
     max-width: 396px;
     display: flex;
     flex-direction: column;
@@ -14,7 +14,7 @@
     padding-top: 70px;
 }
 
-.register_heading {
+.login_heading {
     font-weight: 500;
     font-size: 24px;
     line-height: 29px;
@@ -22,21 +22,21 @@
     padding-bottom: 40px;
 }
 
-.register_form{
+.login_form{
     text-align: left;
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.register_form_label {
+.login_form_label {
     font-weight: normal;
     font-size: 10px;
     line-height: 12px;
     color: #8B8B8B;
 }
 
-.register_form_input {
+.login_form_input {
     width: 100%;
     background-color: transparent;
     margin-top: 5px;
@@ -51,7 +51,7 @@
     padding-bottom: 10px;
 }
 
-.register-form_login-container {
+.login-form_login-container {
     display: flex;
     justify-content: center;
     font-weight: normal;
@@ -61,7 +61,7 @@
     color: #8B8B8B;
 }
 
-.register-form_login {
+.login-form_login {
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
@@ -69,7 +69,7 @@
     margin-right: 6px;
 }
 
-.register-form_submit-button {
+.login-form_submit-button {
     height: 45px;
     font-style: normal;
     font-weight: 500;
@@ -84,7 +84,7 @@
     cursor: pointer;
 }
 
-.register_form_login-button {
+.login_form_register-button {
     font-size: 14px;
     line-height: 17px;
     border: none;

@@ -1,0 +1,14 @@
+.hamburger-menu_button {
+    height: 40px;
+    width: 43px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-image: url(../../../images/hamburgermenu_button.svg);
+    background-color: transparent;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    border: transparent;
+    cursor: pointer;
+}

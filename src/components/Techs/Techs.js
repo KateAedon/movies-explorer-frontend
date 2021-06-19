@@ -4,9 +4,9 @@ import '../Main/Main.css';
 
 function Techs(props) {
     return (
-        <div className='techs'>
+        <div className='techs' id='techs_anchor'>
             <h2 className='subheading techs_subheading'>Технологии</h2>
-            <hr className='subheading_hr'></hr>
+            <hr className='techs_hr'></hr>
             <div className='techs_container'>
                 <h1 className='heading techs_heading'>7 технологий</h1>
                 <p className='article-text techs_article'>На курсе 

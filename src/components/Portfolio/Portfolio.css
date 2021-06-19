@@ -29,14 +29,51 @@
 }
 
 .portfolio_list_item {
+    border-bottom: 1px solid #424242;
+    margin-bottom: 20px;
+}
 
+.portfolio_list_item:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
 }
 
 .portfolio_list_item_link {
     text-decoration: none;
     color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
-.portfolio_list_hr {
-    color: #424242;
+.portfolio_list_item_arrow {
+
+}
+
+
+@media screen and (max-width: 900px) {
+    .portfolio_list {
+        padding-bottom: 90px;
+    }
+}
+
+  @media screen and (max-width: 400px)  {
+    .portfolio {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .portfolio_header {
+        padding-bottom: 40px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .portfolio_list {
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: -0.04em;
+        padding-bottom: 70px;
+    }
 }

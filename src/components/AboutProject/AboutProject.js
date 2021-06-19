@@ -4,9 +4,9 @@ import '../Main/Main.css';
 
 function AboutProject(props) {
     return (
-        <div className='about-project'>
+        <div className='about-project' id='about-project_anchor'>
             <h2 className='subheading about-project_heading'>О проекте</h2>
-            <hr className='subheading_hr'></hr>
+            <hr className='about-project_hr'></hr>
             <div className='about-project_container'>
                 <article className='about-project_article'>
                     <h3 className='about-project_article_title'>

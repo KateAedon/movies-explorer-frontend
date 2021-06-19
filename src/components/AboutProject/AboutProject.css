@@ -7,6 +7,13 @@
     margin-top: 10px;
 }
 
+.about-project_hr {
+    background-color: white;
+    overflow: hidden;
+    border: none;
+    height: 1px;
+}
+
 .about-project_container {
     display: flex;
     margin-top: 70px;
@@ -16,6 +23,7 @@
 .about-project_article {
     width: 550px;
     text-align: left;
+    margin-top: 56px;
 }
 
 .about-project_article:first-of-type {
@@ -62,3 +70,52 @@
     color: #8B8B8B;
     margin-top: 14px;
 }
+
+@media screen and (max-width: 400px) {
+    .about-project {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .about-project_heading {
+        padding-top: 70px;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .about-project_hr {
+        margin: 0;
+        margin-bottom: 4px;
+    }
+
+    .about-project_container {
+        margin-top: 60px;
+    }
+
+    .about-project_article_title {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .about-project_container {
+        display: inline;
+        width: 100vw - 36px;
+    }
+
+    .about-project_article {
+        width: 100%;
+    }
+
+    .about-project_article:last-of-type {
+        margin-bottom: 60px;
+    }
+
+    .about-project_duration_container {
+        font-size: 11px;
+        padding-bottom: 70px;
+    }
+
+    .about-project_duration_title {
+        margin-top: 10px;
+    }
+  }

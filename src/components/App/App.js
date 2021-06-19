@@ -8,26 +8,54 @@ import Movies from '../Movies/Movies';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import PageNotFound from '../PageNotFound/PageNotFound';
+import Login from '../Login/Login';
+import SavedMovies from '../SavedMovies/SavedMovies';
 
 function App() {
 
   const isloggedIn = true; //change to false!
 
-  
-
   return (
-    <div className="App">
-      <Route exact path ='/'>
-      
-        <Register />
-        {/*<PageNotFound />
-        <Header isLoggedIn={isloggedIn}/>*
-        {/* <Movies />
-            <Main /> 
-        <Footer />*/}
-      </Route>
-      
-      
+    <div className='App'>
+      <div className='app_container'>
+        <Route exact path ={['/', '/movies', '/saved-movies', '/profile']}>
+          <Header isLoggedIn={isloggedIn} />
+        </Route>
+        
+        <Switch>
+          <Route exact path='/'>
+            <Main />
+          </Route>
+
+          <Route exact path='/movies'>
+            <Movies />
+          </Route>
+
+          <Route exact path='/saved-movies'>
+            <SavedMovies />
+          </Route>
+
+          <Route exact path='/profile'>
+            <Profile />
+          </Route>
+
+          <Route exact path='/signin'>
+            <Login />
+          </Route>
+
+          <Route exact path='/signup'>
+            <Register />
+          </Route>
+
+          <Route component={PageNotFound} />
+
+        </Switch>
+
+        <Route exact path ={['/', '/movies', '/saved-movies']}>
+          <Footer />
+        </Route>
+
+      </div>
     </div>
   );
 }

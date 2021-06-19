@@ -41,6 +41,13 @@
     margin-top: 6px;
 }
 
+.about-me_hr {
+    background-color: white;
+    overflow: hidden;
+    border: none;
+    height: 1px;
+}
+
 .about-me_links {
     text-align: left;
 }
@@ -72,4 +79,54 @@
     border-radius: 10px;
     background-size: cover;
     background-repeat: no-repeat;
+    margin-left: 49px;
+}
+
+@media screen and (max-width: 500px)  {
+    .about-me {
+        padding-left: 18px;
+        padding-right: 18px;
+        align-items: center;
+    }
+
+    .about-me_title {
+        padding-top: 70px;
+        font-size: 30px;
+    }
+
+    .about-me_container {
+        flex-direction: column-reverse;
+        padding-top: 60px;
+        padding-bottom: 70px;
+        align-items: center;
+    }
+
+    .about-me_photo {
+        width: 292px;
+        margin: 0;
+    }
+
+    .about-me_article_container {
+        padding-top: 40px;
+    }
+
+    .about-me_article_description {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .about-me_article {
+        margin: 0;
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .about-me_links {
+        padding-top: 40px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+    }
 }
