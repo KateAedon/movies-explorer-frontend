@@ -5,13 +5,15 @@ import './SearchForm.css';
 function SearchForm() {
     return (
         <form className='search-form' noValidate>
-            <div className='search-form_container'>
+            <div className='search-form_container' noValidate>
                 <input 
                     className='search-form_input'
                     name='search_movie'
                     placeholder='Фильм'
                     value={''}
                     autoComplete='off'
+                    minLength='2'
+                    maxLength='30'
                     required
                 />
                 <span className='search-form_error'></span>

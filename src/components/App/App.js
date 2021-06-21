@@ -13,7 +13,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 
 function App() {
 
-  const isloggedIn = false; //change to false!
+  const isloggedIn = true; //change to false!
 
   return (
     <div className='App'>

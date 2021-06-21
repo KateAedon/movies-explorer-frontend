@@ -47,6 +47,7 @@
     border-radius: 3px;
     border: none;
     padding: 0;
+    cursor: pointer;
 }
 
 .search-form_short-movies_container {
