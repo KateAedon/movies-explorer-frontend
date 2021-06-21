@@ -24,6 +24,10 @@
     background-color: #073042;
 }
 
+.header_auth_main {
+    background-color: #073042;
+}
+
 @media screen and (max-width: 900px) {
     .header_container {
         padding: 18px 30px 18px 30px;

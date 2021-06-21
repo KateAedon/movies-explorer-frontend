@@ -71,7 +71,7 @@
     margin-top: 14px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
     .about-project {
         padding-left: 18px;
         padding-right: 18px;

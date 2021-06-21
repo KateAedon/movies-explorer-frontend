@@ -14,7 +14,6 @@
 
 .navigation_link:last-of-type {
     margin-left: 50px;
-    margin-right: 70px;
 }
 
 .navigation_link:hover {
@@ -26,7 +25,7 @@
 
 .navigation_link:last-of-type:hover {
     margin-left: 30px;
-    margin-right: 50px;
+    margin-right: -20px;
 }
 
 .navigation_link:first-of-type:hover {

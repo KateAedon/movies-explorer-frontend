@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import Navigation from '../Navigation/Navigation';
 import HamburgerMenuButton from '../UI/HamburgerMenuButton/HamburgerMenuButton';
@@ -19,8 +20,9 @@ function Header({ isLoggedIn }) {
         return () => window.removeEventListener('resize', updateWidth);
       });
 
-    const isMobile = width <= 768;
+    let location = useLocation().pathname;
 
+    const isMobile = width <= 768;
     const isOpen = false;
 
     return (
@@ -33,8 +35,9 @@ function Header({ isLoggedIn }) {
                 </header>
             )}
 
+
             {isLoggedIn && isMobile && (
-                <header className='header_container header_mobile_auth'>
+                <header className={'header_container ' + ((location === "/") ? 'header_auth_main' : "")}>
                     <Logo />
                     <HamburgerMenuButton />
                 </header>
@@ -43,7 +46,7 @@ function Header({ isLoggedIn }) {
             {/* {isLoggedIn && <HamburgerMenu isOpen={ isOpen }  />}  */}
 
             {isLoggedIn && !isMobile && (
-                <header className='header_container'>
+                <header className={'header_container ' + ((location === "/") ? 'header_auth_main' : "")}>
                     <Logo />
                     <div className='header_menu'>
                         <Navigation isLoggedIn={  isLoggedIn}/>

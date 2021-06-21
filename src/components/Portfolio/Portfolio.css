@@ -58,7 +58,7 @@
     }
 }
 
-  @media screen and (max-width: 400px)  {
+  @media screen and (max-width: 500px)  {
     .portfolio {
         padding-left: 18px;
         padding-right: 18px;

@@ -7,7 +7,6 @@ function Techs(props) {
         <div className='techs' id='techs_anchor'>
             <h2 className='subheading techs_subheading'>Технологии</h2>
             <hr className='techs_hr'></hr>
-            <div className='techs_container'>
                 <h1 className='heading techs_heading'>7 технологий</h1>
                 <p className='article-text techs_article'>На курсе 
                 веб-разработки мы освоили технологии, которые применили 
@@ -35,7 +34,6 @@ function Techs(props) {
                         mongoDB
                     </li>
                 </ul>
-            </div>
         </div>
     );
 }
