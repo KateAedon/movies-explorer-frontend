@@ -1,0 +1,121 @@
+.about-project {
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.about-project_title {
+    margin-top: 10px;
+}
+
+.about-project_hr {
+    background-color: white;
+    overflow: hidden;
+    border: none;
+    height: 1px;
+}
+
+.about-project_container {
+    display: flex;
+    margin-top: 70px;
+    padding-bottom: 110px;
+}
+
+.about-project_article {
+    width: 550px;
+    text-align: left;
+    margin-top: 56px;
+}
+
+.about-project_article:first-of-type {
+    margin-right: 40px;
+}
+
+.about-project_article_title {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+}
+
+.about-project_article_text {
+
+}
+
+.about-project_duration_container {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #000000;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    max-width: 1140px;
+    width: 100%;
+    padding-bottom: 110px;
+}
+.about-project_duration {
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+.about-project_duration-backend{
+    background-color: #3DDC84;
+}
+
+.about-project_duration-frontend {
+    background-color: #303030;
+    color: #FFFFFF;
+}
+.about-project_duration_title {
+    color: #8B8B8B;
+    margin-top: 14px;
+}
+
+@media screen and (max-width: 500px) {
+    .about-project {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .about-project_heading {
+        padding-top: 70px;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .about-project_hr {
+        margin: 0;
+        margin-bottom: 4px;
+    }
+
+    .about-project_container {
+        margin-top: 60px;
+    }
+
+    .about-project_article_title {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .about-project_container {
+        display: inline;
+        width: 100vw - 36px;
+    }
+
+    .about-project_article {
+        width: 100%;
+    }
+
+    .about-project_article:last-of-type {
+        margin-bottom: 60px;
+    }
+
+    .about-project_duration_container {
+        font-size: 11px;
+        padding-bottom: 70px;
+    }
+
+    .about-project_duration_title {
+        margin-top: 10px;
+    }
+  }

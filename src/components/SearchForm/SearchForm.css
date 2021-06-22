@@ -1,0 +1,79 @@
+.search-form {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 70px;
+    padding-top: 80px;
+    padding-right: 70px;
+    padding-bottom: 100px;
+}
+
+.search-form_container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.search-form_input {
+    max-width: 1060px;
+    width: 100%;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: #8B8B8B;
+    background-color: #2F2F2F;
+    border-radius: 4px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 22px;
+    margin-right: 10px;
+    border: none;
+}
+
+.search-form_error{
+
+}
+
+.search-form_button {
+    width: 70px;
+    height: 44px;
+    background-color: #4285F4;
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    border-radius: 3px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.search-form_short-movies_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 31px;
+    padding-bottom: 40px;
+}
+
+.search-from_short-movies_heading {
+    padding-left: 12px;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+    color: #FFFFFF;
+}
+
+.search-form_hr{
+    color: #424242;
+}
+
+
+@media screen and (max-width: 900px) {
+    .search-form {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}

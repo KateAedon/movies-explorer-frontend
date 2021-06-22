@@ -1,0 +1,24 @@
+.load-more {
+    padding-top: 50px;
+    padding-bottom: 80px;
+}
+
+.load-more_button {
+    width: 320px;
+    height: 36px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #FFFFFF;
+    background-color: #202020;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    cursor: pointer;
+}

@@ -1,0 +1,8 @@
+.saved-movie_icon {
+    width: 21px;
+    height: 21px;
+    background-image: url('../../images/saved-movie-icon.svg');
+    position: absolute;
+    top: 14px;
+    right: 14px;
+}
