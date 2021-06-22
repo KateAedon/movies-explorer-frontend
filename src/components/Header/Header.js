@@ -10,6 +10,7 @@ import './Header.css'
 
 function Header({ isLoggedIn }) {
 
+    // слушаем ширину экрана и определяем тип устройства
     const [width, setWidth] = useState(window.innerWidth);
     const updateWidth = () => {
         setWidth(window.innerWidth);
@@ -19,11 +20,16 @@ function Header({ isLoggedIn }) {
         window.addEventListener('resize', updateWidth);
         return () => window.removeEventListener('resize', updateWidth);
       });
+    const isMobile = width <= 768;
 
+    // цвет хэдера меняетсяв зависимости от того на какой странице мы находимся
     let location = useLocation().pathname;
 
-    const isMobile = width <= 768;
-    const isOpen = false;
+    // слушаем открыто меню-гамбургер или нет
+    const [isOpen, setIsOpen] = useState(false);
+    function handleHamburgerClick() {
+        setIsOpen(!isOpen);
+    }
 
     return (
         <div className='header'>
@@ -35,18 +41,8 @@ function Header({ isLoggedIn }) {
                 </header>
             )}
 
-
-            {isLoggedIn && isMobile && (
-                <header className={'header_container ' + ((location === "/") ? 'header_auth_main' : "")}>
-                    <Logo />
-                    <HamburgerMenuButton />
-                </header>
-            )}
-            
-            {/* {isLoggedIn && <HamburgerMenu isOpen={ isOpen }  />}  */}
-
             {isLoggedIn && !isMobile && (
-                <header className={'header_container ' + ((location === "/") ? 'header_auth_main' : "")}>
+                <header className={'header_container ' + ((location === '/') ? 'header_auth_main' : '')}>
                     <Logo />
                     <div className='header_menu'>
                         <Navigation isLoggedIn={  isLoggedIn}/>
@@ -54,6 +50,17 @@ function Header({ isLoggedIn }) {
                     </div>  
                 </header>
             )}
+
+            {isLoggedIn && isMobile && (
+                <header className={'header_container ' + ((location === '/') ? 'header_auth_main' : '')}>
+                    <Logo />
+                    <HamburgerMenuButton handleClick={ handleHamburgerClick } />
+                </header>
+            )}
+            
+            {isLoggedIn && <HamburgerMenu isOpen={ isOpen } handleClose={ handleHamburgerClick } /> }
+
+       
 
         </div>
     );
