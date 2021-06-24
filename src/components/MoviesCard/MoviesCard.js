@@ -1,20 +1,28 @@
 import React from 'react';
 import './MoviesCard.css';
-import cover1 from '../../images/movie1_cover.svg'
-import SaveMovieButton from '../SaveMovieButton/SaveMovieButton';
+import { movies_url } from '../../utils/constants';
 import RemoveMovieButton from '../RemoveMovieButton/RemoveMovieButton';
 import SavedMovieIcon from '../SavedMovieIcon/SavedMovieIcon';
 
-function MoviesCard({savedMovie, addedMovie}) {
+function MoviesCard({ movie }) {
+
+    const minutesToHours = (time) => {
+        const hours = Math.floor(time / 60);
+        const minutes = time % 60;
+
+        return(`${hours > 0 ? `${hours}ч ` : ''}${minutes}м`);
+    }
+
     return (
         <section className='movies-card'>
             <div className='movies-card_container'>
-                <img className='movies-card_cover' alt='изображение к фильму' src={cover1} />
-                {savedMovie ? <RemoveMovieButton /> : <SaveMovieButton />}
-                {addedMovie ? <SavedMovieIcon /> : ''}
+                <button className='movies-card_save-button' type='button'>Сохранить</button>
+                <a href={movie.trailerLink} className='movies-card_link'>
+                    <img className='movies-card_cover' alt='изображение к фильму' src={`${movies_url}${movie.image.url}`} />
+                </a>
                 <div className='movies-card_data'>
-                    <h4 className='movies-card_title'>33 слова о дизайне</h4>
-                    <p className='movies-card_length'>1ч 17м</p>
+                    <h4 className='movies-card_title'>{movie.nameRU}</h4>
+                    <p className='movies-card_length'>{minutesToHours(movie.duration)}</p>
                 </div>
             </div>
         </section>

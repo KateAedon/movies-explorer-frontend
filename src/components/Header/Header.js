@@ -4,6 +4,7 @@ import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import Navigation from '../Navigation/Navigation';
 import HamburgerMenuButton from '../UI/HamburgerMenuButton/HamburgerMenuButton';
 import Logo from '../UI/Logo/Logo';
+import Overlay from '../UI/Overlay/Overlay';
 import ProfileButton from '../UI/ProfileButton/ProfileButton';
 
 import './Header.css'
@@ -26,9 +27,9 @@ function Header({ isLoggedIn }) {
     let location = useLocation().pathname;
 
     // слушаем открыто меню-гамбургер или нет
-    const [isOpen, setIsOpen] = useState(false);
+    const [isHamburgerMenuOpen, setHamburgerMenuOpenOpen] = useState(false);
     function handleHamburgerClick() {
-        setIsOpen(!isOpen);
+        setHamburgerMenuOpenOpen(!isHamburgerMenuOpen);
     }
 
     return (
@@ -58,9 +59,9 @@ function Header({ isLoggedIn }) {
                 </header>
             )}
             
-            {isLoggedIn && <HamburgerMenu isOpen={ isOpen } handleClose={ handleHamburgerClick } /> }
+            {isLoggedIn && <HamburgerMenu isOpen={ isHamburgerMenuOpen } handleClose={ handleHamburgerClick } /> }
 
-       
+            {isHamburgerMenuOpen && <Overlay /> }
 
         </div>
     );

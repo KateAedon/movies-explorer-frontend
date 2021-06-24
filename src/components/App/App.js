@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import Main from '../Main/Main';
 import Header from '../Header/Header';
@@ -10,8 +10,22 @@ import Register from '../Register/Register';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Login from '../Login/Login';
 import SavedMovies from '../SavedMovies/SavedMovies';
+import MoviesApi from '../../utils/MoviesApi';
+import moviesApi from '../../utils/MoviesApi';
 
 function App() {
+
+  const [moviesData, setMoviesData] = React.useState([]);
+
+  useEffect(() => {
+    moviesApi
+      .getMoviesData()
+      .then(res => {
+        setMoviesData(res)
+      })
+  }, []);
+
+  console.log(moviesData);
 
   const isloggedIn = true; //change to false!
 
@@ -28,7 +42,7 @@ function App() {
           </Route>
 
           <Route exact path='/movies'>
-            <Movies />
+            <Movies movies={ moviesData }/>
           </Route>
 
           <Route exact path='/saved-movies'>

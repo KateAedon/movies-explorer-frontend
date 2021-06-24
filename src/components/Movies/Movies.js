@@ -5,12 +5,12 @@ import Preloader from '../Preloader/Preloader';
 import SearchForm from '../SearchForm/SearchForm';
 import './Movies.css';
 
-function Movies() {
+function Movies({ movies }) {
     return (
         <div className='movies'>
             <SearchForm />
-            <Preloader />
-            <MoviesCardList />
+            {/* <Preloader /> */}
+            <MoviesCardList data={ movies }/>
             <LoadMoreButton />
         </div>
     );
