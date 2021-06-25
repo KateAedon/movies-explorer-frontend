@@ -3,6 +3,7 @@ import './MoviesCard.css';
 import { movies_url } from '../../utils/constants';
 import RemoveMovieButton from '../RemoveMovieButton/RemoveMovieButton';
 import SavedMovieIcon from '../SavedMovieIcon/SavedMovieIcon';
+import SaveMovieButton from '../SaveMovieButton/SaveMovieButton';
 
 function MoviesCard({ movie }) {
 
@@ -13,11 +14,20 @@ function MoviesCard({ movie }) {
         return(`${hours > 0 ? `${hours}ч ` : ''}${minutes}м`);
     }
 
+    const [isHover, setIsHover] = React.useState(false);
+
+    function handleMovieHover() {
+        setIsHover(!isHover);
+    }
+
     return (
         <section className='movies-card'>
-            <div className='movies-card_container'>
-                <button className='movies-card_save-button' type='button'>Сохранить</button>
-                <a href={movie.trailerLink} className='movies-card_link'>
+            <div className='movies-card_container' onMouseOver={handleMovieHover}>
+                {isHover && (
+                    <SaveMovieButton />
+                )}
+                {/* <button className='movies-card_save-button' type='button'>Сохранить</button> */}
+                <a href={movie.trailerLink} className='movies-card_link' >
                     <img className='movies-card_cover' alt='изображение к фильму' src={`${movies_url}${movie.image.url}`} />
                 </a>
                 <div className='movies-card_data'>

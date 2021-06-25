@@ -2,7 +2,7 @@ import React from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import './SearchForm.css';
 
-function SearchForm() {
+function SearchForm({ onFilterCheckbox }) {
     return (
         <form className='search-form' noValidate>
             <div className='search-form_container' noValidate>
@@ -20,7 +20,7 @@ function SearchForm() {
                 <button className='search-form_button' type="submit">Найти</button>
             </div>
             <div className='search-form_short-movies_container'>
-                <FilterCheckbox />
+                <FilterCheckbox onFilterCheckbox={ onFilterCheckbox } />
                 <p className='search-from_short-movies_heading'>Короткометражки</p>
             </div>
             <hr className='search-form_hr'></hr>
