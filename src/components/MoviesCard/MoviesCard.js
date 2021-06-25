@@ -23,10 +23,7 @@ function MoviesCard({ movie }) {
     return (
         <section className='movies-card'>
             <div className='movies-card_container' onMouseOver={handleMovieHover}>
-                {isHover && (
-                    <SaveMovieButton />
-                )}
-                {/* <button className='movies-card_save-button' type='button'>Сохранить</button> */}
+                <button className='movies-card_save-button' type='button'>Сохранить</button>
                 <a href={movie.trailerLink} className='movies-card_link' >
                     <img className='movies-card_cover' alt='изображение к фильму' src={`${movies_url}${movie.image.url}`} />
                 </a>

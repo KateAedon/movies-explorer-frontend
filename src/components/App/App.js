@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import React, { useEffect, useImperativeHandle } from 'react';
+import { Route, Switch, useHistory, Redirect, withRouter } from 'react-router-dom';
 import Main from '../Main/Main';
 import Header from '../Header/Header';
 import './App.css';
@@ -12,6 +12,7 @@ import Login from '../Login/Login';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import MoviesApi from '../../utils/MoviesApi';
 import moviesApi from '../../utils/MoviesApi';
+import api from '../../utils/MainApi';
 
 function App() {
 
@@ -27,7 +28,19 @@ function App() {
 
   console.log(moviesData);
 
-  const isloggedIn = true; //change to false!
+  const history = useHistory();
+
+  function handleRegister(name, email, password) {
+    api
+    .register(name, email, password)
+    .then((res) => {
+      localStorage.setItem('token', res.token);
+      history.push('/signin')
+    })
+  }
+
+
+  const isloggedIn = false; //change to false!
 
   return (
     <div className='App'>
@@ -58,10 +71,12 @@ function App() {
           </Route>
 
           <Route exact path='/signup'>
-            <Register />
+            <Register onRegister={ handleRegister } />
           </Route>
 
-          <Route component={PageNotFound} />
+          <Route path='*'>
+            <PageNotFound />
+          </Route>
 
         </Switch>
 

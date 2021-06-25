@@ -1,15 +1,37 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Logo from '../UI/Logo/Logo';
 import './Register.css';
 
-function Register() {
+function Register(props) {
+
+    const [name, setName] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+
+    function handleName(e) {
+        setName(e.target.value);
+      }
+
+    function handleEmail(e) {
+        setEmail(e.target.value);
+      }
+    
+    function handlePassword(e) {
+        setPassword(e.target.value);
+      }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        props.onRegister(name, email, password);
+  }
+
     return (
         <div className='register'>
             <div className='register_container'>
             <Logo />
             <h2 className='register_heading'>Добро пожаловать!</h2>
-            <form className='register_form' noValidate>
+            <form className='register_form' onSubmit={handleSubmit} noValidate>
 
                 <label className='register_form_label'>
                     Имя
@@ -20,7 +42,8 @@ function Register() {
                     minLength='2'
                     maxLength='30'
                     placeholder='Имя'
-                    value={''}
+                    value={name}
+                    onChange={handleName}
                     type='text'
                     autoComplete='off'
                 />
@@ -36,7 +59,8 @@ function Register() {
                     minLength='2'
                     maxLength='30'
                     placeholder='Email'
-                    value={'Email@mail.mail'}
+                    value={email}
+                    onChange={handleEmail}
                     type='email'
                     autoComplete='off'
                 />
@@ -52,7 +76,8 @@ function Register() {
                     minLength='2'
                     maxLength='30'
                     placeholder='Password'
-                    value={''}
+                    value={password}
+                    onChange={handlePassword}
                     type='password'
                     autoComplete='off'
                 />
@@ -69,4 +94,4 @@ function Register() {
     );
 }
 
-export default Register;
+export default withRouter(Register);
