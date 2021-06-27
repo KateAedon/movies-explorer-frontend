@@ -1,4 +1,4 @@
-import React, { useEffect, useImperativeHandle } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, useHistory, Redirect, withRouter } from 'react-router-dom';
 import Main from '../Main/Main';
 import Header from '../Header/Header';
@@ -13,12 +13,20 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import MoviesApi from '../../utils/MoviesApi';
 import moviesApi from '../../utils/MoviesApi';
 import api from '../../utils/MainApi';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 function App() {
 
+  const [isLoggedIn, setLoggedIn] = React.useState(false);
   const [moviesData, setMoviesData] = React.useState([]);
+  const [currentUser, setCurrentUser] = React.useState([]);
+  const [data, setData] = React.useState({
+    email: '',
+    password: '',
+  });
 
-  useEffect(() => {
+  React.useEffect(() => {
     moviesApi
       .getMoviesData()
       .then(res => {
@@ -26,27 +34,90 @@ function App() {
       })
   }, []);
 
-  console.log(moviesData);
+  React.useEffect((res) => {
+    api
+    .getProfileInfo(res)
+    .then(res => {
+        setCurrentUser(res)
+})
+.catch((err) => {
+    console.log(err)
+})
+}, [])
 
   const history = useHistory();
 
-  function handleRegister(name, email, password) {
+  function checkToken() {
+    if (localStorage.getItem('token')) {
+      const token = localStorage.getItem('token');
+      api
+      .checkToken(token)
+      .then((res) => {
+        if (res) {
+          setLoggedIn(true);
+          history.push('/movies');
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+    }
+  }
+
+  React.useEffect(() => {
+    checkToken();
+  }, []);
+
+  function handleRegister( name, email, password ) {
     api
-    .register(name, email, password)
+    .register( name, email, password )
     .then((res) => {
       localStorage.setItem('token', res.token);
       history.push('/signin')
     })
+    .catch((err) => {
+      console.log(err)
+  })
   }
 
+  function handleLogin( email, password) {
+    api
+    .login( email, password )
+    .then((res) => {
+        // setEmail(data.email);
+        localStorage.setItem('token', res.token);
+        setLoggedIn(true);
+        history.push('/');
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
 
-  const isloggedIn = false; //change to false!
+  function handleLogOut() {
+    localStorage.removeItem('token');
+    setLoggedIn(false);
+    history.push('/signin');
+  }
+
+  function handleUpdateUser(data) {
+    api
+    .updateProfileInfo(data)
+    .then(data => {
+      setCurrentUser(data)
+      history.push('/')
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+    }
 
   return (
+    <CurrentUserContext.Provider value={currentUser}>
     <div className='App'>
       <div className='app_container'>
         <Route exact path ={['/', '/movies', '/saved-movies', '/profile']}>
-          <Header isLoggedIn={isloggedIn} />
+          <Header isLoggedIn={isLoggedIn} />
         </Route>
         
         <Switch>
@@ -54,20 +125,38 @@ function App() {
             <Main />
           </Route>
 
-          <Route exact path='/movies'>
-            <Movies movies={ moviesData }/>
-          </Route>
+          <ProtectedRoute
+            exact
+            path='/movies'
+            loggedIn={isLoggedIn}
+            component={Movies}
+            movies={moviesData}
+          />
 
-          <Route exact path='/saved-movies'>
-            <SavedMovies />
-          </Route>
+        <ProtectedRoute
+              exact
+              path='/saved-movies'
+              loggedIn={isLoggedIn}
+              component={SavedMovies}
+              movies={moviesData}
+            />    
 
-          <Route exact path='/profile'>
-            <Profile />
-          </Route>
+        <ProtectedRoute
+              exact
+              path='/profile'
+              loggedIn={isLoggedIn}
+              component={Profile}
+              onUpdateUser={handleUpdateUser}
+              onLogOut={handleLogOut}
+              currentUser={currentUser}
+            />  
 
           <Route exact path='/signin'>
-            <Login />
+            <Login 
+              onLogin={handleLogin} 
+              onClick={setData} 
+              data={data} 
+            />
           </Route>
 
           <Route exact path='/signup'>
@@ -86,6 +175,7 @@ function App() {
 
       </div>
     </div>
+  </CurrentUserContext.Provider>
   );
 }
 

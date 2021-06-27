@@ -1,4 +1,4 @@
-export class Api {
+class Api {
     constructor(config) {
         this.url = config.url;
         this.headers = config.headers;
@@ -11,6 +11,24 @@ export class Api {
         return res.json();
     }
 
+    getHeader() {
+        return {
+            ...this.headers,
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+        }
+    }
+
+    checkToken(token) {
+        return fetch(`${this._url}/users/me`, {
+          method: 'GET',
+          headers: {
+            ...this.headers,
+            Authorization: `Bearer ${token}`
+          }
+        })
+        .then(this._handleResponse)
+    }
+
     register( name, email, password ) {
         return fetch(`${this.url}/signup`, {
             method: 'POST',
@@ -20,15 +38,29 @@ export class Api {
         .then(this._handleResponse)
     }
 
-    authorize( name, email, password ) {
+    login( email, password ) {
         return fetch(`${this.url}/signin`, {
           method: 'POST',
           headers: this.headers,
-          body: JSON.stringify({ name, email, password })
+          body: JSON.stringify({ email, password })
         })
         .then(this._handleResponse)
-      }
-    
+    }
+
+    getProfileInfo() {
+        return fetch(`${this.url}/users/me`, {
+            method: "GET",
+            headers: this.getHeader(),
+        }).then(this._handleResponse)
+    }
+
+    updateProfileInfo(data) {
+        return fetch(`${this.url}/users/me`, {
+            method: 'PATCH',
+            headers: this.getHeader(),
+            body: JSON.stringify(data)  
+        }).then(this._handleResponse)
+    }
 }
 
 const api = new Api({
