@@ -1,29 +1,24 @@
 import React from 'react';
 import { Link, withRouter } from "react-router-dom";
+import useFormWithValidation from '../../hooks/useFormWithValidation';
 import Logo from '../UI/Logo/Logo';
 import './Login.css';
 
 function Login(props) {
 
-    function handleChange(e) {
-        const { name, value } = e.target;
-        props.onClick({
-          ...props.data,
-          [name]: value
-        })
-      }
+    const { values, handleChange, errors, isValid } = useFormWithValidation();
+    const { email, password } = values;
       
       function handleSubmit(e) {
-      e.preventDefault();
-      const { email, password } = props.data;
-      props.onLogin(email, password);
+        e.preventDefault();
+        props.onLogin({ email, password });
     }
 
     return (
         <div className='login'>
             <div className='login_container'>
             <Logo />
-            <h2 className='login_heading'>Рады видеть!</h2>
+            <h3 className='login_heading'>Рады видеть!</h3>
             <form className='login_form' noValidate onSubmit={ handleSubmit }>
 
             <label className='login_form_label'>
@@ -35,13 +30,15 @@ function Login(props) {
                     required
                     minLength='2'
                     maxLength='30'
-                    placeholder='Email'
-                    value={props.data.email}
+                    placeholder=''
+                    value={values.email || ''}
                     onChange={ handleChange }
                     type='email'
                     autoComplete='off'
                 />
-                
+                <span className='login_form_error'>
+                    {errors.email || ''}
+                </span>
             </label>
 
             <label className='login_form_label'>
@@ -53,15 +50,22 @@ function Login(props) {
                     required
                     minLength='2'
                     maxLength='30'
-                    placeholder='Password'
-                    value={props.data.password}
+                    placeholder=''
+                    value={values.password || ''}
                     onChange={ handleChange }
                     type='password'
                     autoComplete='off'
                 />
-                
+                <span className='login_form_error'>
+                    {errors.password || ''}
+                </span>
             </label>
-                <button className='login-form_submit-button' type='submit'>Войти</button>
+                <button 
+                    className={(isValid ? 'login-form_submit-button' : 'login-form_submit-button login-form_submit-button_not-active')}
+                    type='submit'
+                >
+                        Войти
+                </button>
                 <div className='login-form_login-container'>
                     <p className='login-form_login'>Ещё не зарегистрированы? </p> 
                     <Link to='/signup' className='login_form_register-button'> Зарегистрироваться</Link>
