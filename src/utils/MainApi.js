@@ -19,7 +19,7 @@ class Api {
     }
 
     checkToken(token) {
-        return fetch(`${this._url}/users/me`, {
+        return fetch(`${this.url}/users/me`, {
           method: 'GET',
           headers: {
             ...this.headers,
@@ -64,7 +64,8 @@ class Api {
 }
 
 const api = new Api({
-    url: 'https://api.kateaedon.movie.nomoredomains.icu',
+    url: 'http://localhost:3001',
+    //'https://api.kateaedon.movie.nomoredomains.icu',
     headers: {
         'Content-Type': 'application/json'
   },
