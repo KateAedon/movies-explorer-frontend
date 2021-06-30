@@ -10,7 +10,6 @@ import Register from '../Register/Register';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import Login from '../Login/Login';
 import SavedMovies from '../SavedMovies/SavedMovies';
-import MoviesApi from '../../utils/MoviesApi';
 import moviesApi from '../../utils/MoviesApi';
 import api from '../../utils/MainApi';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -72,22 +71,25 @@ function App() {
     api
     .register( name, email, password )
     .then((res) => {
-      localStorage.setItem('token', res.token);
-      history.push('/signin')
+      if (res) {
+        handleLogin( email, password )
+      }
+      alert('Вы успешно зарегистрировались!');
+      history.push('/movies')
     })
     .catch((err) => {
       console.log(err)
   })
   }
 
-  function handleLogin( email, password) {
+  function handleLogin( email, password ) {
     api
     .login( email, password )
     .then((res) => {
         // setEmail(data.email);
         localStorage.setItem('token', res.token);
         setLoggedIn(true);
-        history.push('/');
+        history.push('/movies');
     })
     .catch((err) => {
       console.log(err)
