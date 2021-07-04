@@ -6,7 +6,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import { shortMovieLength } from '../../utils/constants';
 import './Movies.css';
 
-function Movies({ movies }) {
+function Movies({ movie, savedMovies, handleSaveMovie, handleRemoveMovie, handleBookmark, movies}) {
 
     // фильтрация фильмов по длительности
     const [isShortMovieFilterOn, setIsShortMovieFilterOn] = React.useState(true);
@@ -20,7 +20,13 @@ function Movies({ movies }) {
         <div className='movies'>
             <SearchForm onFilterCheckbox={ handleShortMovieFilter } />
             {/* <Preloader /> */}
-            <MoviesCardList data={ isShortMovieFilterOn ? filterMoviesByLength(movies) : movies }/>
+            <MoviesCardList 
+                data={ isShortMovieFilterOn ? filterMoviesByLength(movies) : movies }
+                handleSaveMovie={handleSaveMovie}
+                handleRemoveMovie={handleRemoveMovie}
+                savedMovies={savedMovies}
+                handleBookmark={handleBookmark}
+            />
             <LoadMoreButton />
         </div>
     );

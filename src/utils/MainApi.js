@@ -51,7 +51,8 @@ class Api {
         return fetch(`${this.url}/users/me`, {
             method: "GET",
             headers: this.getHeader(),
-        }).then(this._handleResponse)
+        })
+        .then(this._handleResponse)
     }
 
     updateProfileInfo(data) {
@@ -59,7 +60,45 @@ class Api {
             method: 'PATCH',
             headers: this.getHeader(),
             body: JSON.stringify(data)  
-        }).then(this._handleResponse)
+        })
+        .then(this._handleResponse)
+    }
+
+    saveMovie(movie) {
+        return fetch(`${this.url}/movies`, {
+            method: 'POST',
+            headers: this.getHeader(),
+            body: JSON.stringify({ 
+                country: movie.country,
+                director: movie.director,
+                duration: movie.duration,
+                year: movie.year,
+                description: movie.description,
+                image: movie.image,
+                trailer: movie.trailer,
+                nameRU: movie.nameRU,
+                nameEN: movie.nameEN,
+                thumbnail: movie.image,
+                movieId: movie.movieId,
+             }),
+        })
+        .then(this._handleResponse)
+    }
+
+    deleteMovie(movieId) {
+        return fetch(`${this.url}/movies/${movieId}`, {
+            method: 'DELETE',
+            headers: this.getHeader(),
+          })
+          .then(this._handleResponse)
+    }
+
+    getSavedMovies() {
+        return fetch(`${this.url}/movies`, {
+            method: 'GET',
+            headers: this.getHeader(),
+        })
+        .then(this._handleResponse)
     }
 }
 

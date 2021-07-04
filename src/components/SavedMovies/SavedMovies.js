@@ -4,11 +4,29 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import SearchForm from '../SearchForm/SearchForm';
 import './SavedMovies.css';
+import { shortMovieLength } from '../../utils/constants';
+import LoadMoreButton from '../LoadMoreButton/LoadMoreButton';
 
-function SavedMovies({ movies }) {
+
+function SavedMovies({ movies, savedMovies, handleRemoveMovie, handleBookmark }) {
+    const [isShortMovieFilterOn, setIsShortMovieFilterOn] = React.useState(true);
+    const handleShortMovieFilter = () => {
+        setIsShortMovieFilterOn(!isShortMovieFilterOn);
+    }
+    const filterMoviesByLength = ( allMovies ) => allMovies.filter((movie) => movie.duration < shortMovieLength);
+
+
     return (
-        <div className='saved-movies'>
-            <MoviesCardList addedMovie='true' data={movies}/>
+        <div className='movies'>
+            <SearchForm onFilterCheckbox={ handleShortMovieFilter } />
+            {/* <Preloader /> */}
+            <MoviesCardList 
+                data={ isShortMovieFilterOn ? filterMoviesByLength(savedMovies) : savedMovies }
+                savedMovies={savedMovies}
+                handleRemoveMovie={handleRemoveMovie}
+                handleBookmark={handleBookmark}
+            />
+            <LoadMoreButton />
         </div>
     );
 }

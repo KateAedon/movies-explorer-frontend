@@ -25,18 +25,27 @@
 }
 
 .movies-card_save-button {
-    font-size: 10px;
-    line-height: 9px;
-    text-align: center;
-    color: #FFFFFF;
-    background-color: #313131;
-    opacity: 0.9;
-    border: none;
-    border-radius: 10px;
-    padding: 6px 7px;
+    width: 72px;
+    height: 21px;
+    background-image: url('../../images/save-movie-button.svg');
     position: absolute;
     top: 14px;
     right: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.movies-card_remove-button {
+    width: 21px;
+    height: 21px;
+    background-image: url('../../images/remove-movie_button.svg');
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    border: none;
+    background-color: transparent;
     cursor: pointer;
 }
 
@@ -48,6 +57,8 @@
     top: 14px;
     right: 14px;
     cursor: pointer;
+    border: none;
+    background-color: transparent;
 }
 
 .movies-card_title {
