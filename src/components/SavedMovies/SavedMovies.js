@@ -12,7 +12,8 @@ function SavedMovies({
     handleBookmark, 
     isShortMovies,
     handleShortMovieToggle,
-    shortMovies, 
+    shortMovies,
+    noMoviesFound, 
     preloader, 
     }) {
 

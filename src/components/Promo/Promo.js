@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import promo_logo from '../../images/promo_logo.svg';
 import './Promo.css';
 import '../Main/Main.css';

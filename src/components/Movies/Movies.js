@@ -14,7 +14,8 @@ function Movies({
     handleBookmark,
     isShortMovies,
     handleShortMovieToggle,
-    shortMovies, 
+    shortMovies,
+    noMoviesFound, 
     preloader,
     }) {
 

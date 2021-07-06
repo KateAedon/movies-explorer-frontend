@@ -14,21 +14,30 @@ function MoviesCardList({
     handleBookmark, 
     data, 
     savedMovies, 
-    foundMovies }) {
+    foundMovies,
+    noMoviesFound
+ }) {
      
     const [showMovies, setShowMovies] = useState([]);
     const [currentMoviesNumber, setCurrentMoviesNumber] = useState(0);
     const [moreMovies, setMoreMovies] = useState(3);
-     
+    const [userScreenSize, setUserScrennSize] = useState(window.innerWidth);
+    
+    function checkUserScrenSize() {
+        setTimeout(() => {
+            setUserScrennSize(window.innerWidth);
+        }, 1000);
+    }
+
     const resizeHandler = () => {
-        const windowSize = window.innerWidth;
-        setMoreMovies(getMoviesNumber(windowSize));
+       // const userScreenSize = window.innerWidth;
+        setMoreMovies(getMoviesNumber(userScreenSize));
       };
 
-    const getMoviesNumber = (windowSize) => {
+    const getMoviesNumber = (userScreenSize) => {
 
-        const isDesktop = windowSize >= desktop_resolution;
-        const isTablet = (windowSize >= tablet_resolution) && (windowSize < desktop_resolution);
+        const isDesktop = userScreenSize >= desktop_resolution;
+        const isTablet = (userScreenSize >= tablet_resolution) && (userScreenSize < desktop_resolution);
        
         if (isDesktop) {
           return { first: 12, extra: 3 };
@@ -46,14 +55,15 @@ function MoviesCardList({
     }
 
     useEffect(() => {
+        checkUserScrenSize();
         window.addEventListener('resize', resizeHandler);
         return () => window.removeEventListener('resize', resizeHandler);
     })
 
     useEffect(() => {
-        const windowSize = window.innerWidth;
-        setMoreMovies(getMoviesNumber(windowSize).extra);
-        const number = Math.min(data.length, getMoviesNumber(windowSize).first);
+        const userScreenSize = window.innerWidth;
+        setMoreMovies(getMoviesNumber(userScreenSize).extra);
+        const number = Math.min(data.length, getMoviesNumber(userScreenSize).first);
         setShowMovies(data.slice(0, number));
         setCurrentMoviesNumber(number);
       }, [data]);
@@ -63,7 +73,11 @@ function MoviesCardList({
     return (
         <section className='movies-card-list'>
             <ul className='movies-card-list_list'>
-                {showMovies.map((item) => (
+                {noMoviesFound &&
+                    <p className='movies-card-list_no-results'>Ничего не найдено</p>
+                }
+                {!noMoviesFound && 
+                showMovies.map((item) => (
                     <li className='' key={item.id || item._id}>
                         <MoviesCard
                             movie={item}

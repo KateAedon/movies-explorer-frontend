@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import './MoviesCard.css';
 
 function MoviesCard({ 
@@ -11,7 +10,7 @@ function MoviesCard({
     savedMovies, 
     isMovieSaved,
 }) {
-    
+
     const location = useLocation();
     const isSaved = (location.pathname === "/saved-movies" ? true : isMovieSaved(movie)) ;
     const movieButtonClassname = (`${isSaved ? 'movies-card_saved-icon' : 'movies-card_save-button'}`);

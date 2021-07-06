@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Route, Switch, useHistory, useLocation, Redirect, withRouter } from 'react-router-dom';
+import React from 'react';
+import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Main from '../Main/Main';
 import Header from '../Header/Header';
@@ -28,8 +28,9 @@ function App() {
   const [savedMovies, setSavedMovies] = React.useState([]); // фильмы в избранном
   const [foundMovies, setFoundMovies] = React.useState([]); // найденные фильмы
   const [foundSavedMoveis, setFoundSavedMoveis] = React.useState([]); // найденные фильмы в избранном
-  const [isShortMovies, setIsShortMovies] = React.useState(false);
+  const [isShortMovies, setIsShortMovies] = React.useState(true);
   const [loadingError, setLoadingError] = React.useState('');
+  const [noMoviesFound, setNoMoviesFound] = React.useState(true);
   
   const [isPreloaderShown, setIsPreloaderShown] = React.useState(false);
 
@@ -154,7 +155,12 @@ function App() {
   function showPreloader(isDataLoading) {
     isDataLoading ? setIsPreloaderShown(true) : setIsPreloaderShown(false);
   }
+  const previousSearchInput = localStorage.getItem('searchInput');
+  const previousSearchInputSaved = localStorage.getItem('searchInputSaved');
 
+  function showNoMoviesFound(searchInput) {
+    searchInput.length === 0 ? setNoMoviesFound(true) : setNoMoviesFound(false);
+  }
     
   function getAllMovies() {
     showPreloader(true);
@@ -206,7 +212,7 @@ function App() {
   const shortMovies = (foundMovies) => foundMovies.filter((movie) =>  movie.duration < shortMovieLength)  
   const handleShortMovieToggle = () => setIsShortMovies(!isShortMovies);
 
-    React.useEffect(() => {
+  React.useEffect(() => {
     localStorage.setItem('foundMovies', JSON.stringify(foundMovies))
   }, [foundMovies])
 
@@ -217,10 +223,12 @@ function App() {
   function handleMovieSearch(searchInput) {
     setIsPreloaderShown(true);
     if (location === '/saved-movies') {
+      showNoMoviesFound(previousSearchInputSaved);
       setFoundSavedMoveis(savedMovies.filter((movie) => {
         return movie.nameRU.toLowerCase().includes(searchInput.toLowerCase());
       }))
     } if (location === '/movies') {
+      showNoMoviesFound(previousSearchInput);
       setFoundMovies(allMovies.filter((movie) => {
         return movie.nameRU.toLowerCase().includes(searchInput.toLowerCase());
       }))
@@ -312,6 +320,7 @@ function App() {
             handleSaveMovie={handleSaveMovie}
             handleBookmark={handleBookmark}
             handleRemoveMovie={handleRemoveMovie}
+            noMoviesFound={noMoviesFound}
             preloader={isPreloaderShown}
           />
 
@@ -328,6 +337,7 @@ function App() {
               handleMovieSearch={handleMovieSearch}
               handleBookmark={handleBookmark}
               handleRemoveMovie={handleRemoveMovie}
+              noMoviesFound={noMoviesFound}
               preloader={isPreloaderShown}
             />    
 

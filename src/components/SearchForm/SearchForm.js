@@ -16,6 +16,7 @@ function SearchForm({ onFilterCheckbox, handleMovieSearch }) {
     useEffect(() => {
         if (searchInput !== '') {
           hideErrorMessage();
+          
         } else {
           showErrorMessage();
         }
@@ -61,8 +62,6 @@ function SearchForm({ onFilterCheckbox, handleMovieSearch }) {
             localStorage.setItem('searchInput', searchInput);
         }
     }
-
-
 
     return (
         <form className='search-form' onSubmit={handleSubmit} noValidate>
