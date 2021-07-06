@@ -107,11 +107,14 @@ function App() {
     localStorage.removeItem('userId');
     localStorage.removeItem('searchInput');
     localStorage.removeItem('seachInputSaved');
+    localStorage.removeItem('foundMovies');
+    localStorage.removeItem('foundMoviesSaved');
     setLoggedIn(false);
     setCurrentUser('');
     setData('');
-    setSavedMovies('');
-    setFoundMovies('');
+    setSavedMovies([]);
+    setFoundMovies([]);
+    setFoundSavedMoveis([]);
     history.push('/');
   }
 
@@ -132,6 +135,7 @@ function App() {
       getSavedMovies();
       getAllMovies();
       console.log(foundSavedMoveis)
+
     }
   }, [isLoggedIn])
 
@@ -215,18 +219,16 @@ function App() {
   }, [foundMovies])
 
   React.useEffect(() => {
-    localStorage.setItem('savedMovies', JSON.stringify(savedMovies))
+    localStorage.setItem('foundMoviesSaved', JSON.stringify(savedMovies))
   }, [savedMovies])
 
   function handleMovieSearch(searchInput) {
     setIsPreloaderShown(true);
     if (location === '/saved-movies') {
-      showNoMoviesFound(previousSearchInputSaved);
       setFoundSavedMoveis(savedMovies.filter((movie) => {
         return movie.nameRU.toLowerCase().includes(searchInput.toLowerCase());
       }))
     } if (location === '/movies') {
-      showNoMoviesFound(previousSearchInput);
       setFoundMovies(allMovies.filter((movie) => {
         return movie.nameRU.toLowerCase().includes(searchInput.toLowerCase());
       }))
