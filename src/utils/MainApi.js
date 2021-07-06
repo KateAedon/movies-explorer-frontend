@@ -21,7 +21,6 @@ class Api {
     checkToken(token) {
         return fetch(`${this.url}/users/me`, {
           method: 'GET',
-          credentials: 'include',
           headers: {
             ...this.headers,
             Authorization: `Bearer ${token}`
@@ -33,7 +32,6 @@ class Api {
     register( name, email, password ) {
         return fetch(`${this.url}/signup`, {
             method: 'POST',
-            credentials: 'include',
             headers: this.headers,
             body: JSON.stringify({ name, email, password })
         })
@@ -43,7 +41,6 @@ class Api {
     login( email, password ) {
         return fetch(`${this.url}/signin`, {
           method: 'POST',
-          credentials: 'include',
           headers: this.headers,
           body: JSON.stringify({ email, password })
         })
@@ -53,7 +50,6 @@ class Api {
     getProfileInfo() {
         return fetch(`${this.url}/users/me`, {
             method: "GET",
-            credentials: 'include',
             headers: this.getHeader(),
         })
         .then(this._handleResponse)
@@ -62,7 +58,6 @@ class Api {
     updateProfileInfo(data) {
         return fetch(`${this.url}/users/me`, {
             method: 'PATCH',
-            credentials: 'include',
             headers: this.getHeader(),
             body: JSON.stringify(data)  
         })
@@ -72,7 +67,6 @@ class Api {
     saveMovie(movie) {
         return fetch(`${this.url}/movies`, {
             method: 'POST',
-            credentials: 'include',
             headers: this.getHeader(),
             body: JSON.stringify({ 
                 country: movie.country,
@@ -94,7 +88,6 @@ class Api {
     deleteMovie(movieId) {
         return fetch(`${this.url}/movies/${movieId}`, {
             method: 'DELETE',
-            credentials: 'include',
             headers: this.getHeader(),
           })
           .then(this._handleResponse)
@@ -103,7 +96,6 @@ class Api {
     getSavedMovies() {
         return fetch(`${this.url}/movies`, {
             method: 'GET',
-            credentials: 'include',
             headers: this.getHeader(),
         })
         .then(this._handleResponse)
