@@ -11,8 +11,12 @@ import './Header.css'
 
 function Header({ isLoggedIn }) {
 
-    // слушаем ширину экрана и определяем тип устройства
     const [width, setWidth] = useState(window.innerWidth);
+    const [isHamburgerMenuOpen, setHamburgerMenuOpenOpen] = useState(false);
+    const isMobile = width <= 768;
+
+    let location = useLocation().pathname;
+    
     const updateWidth = () => {
         setWidth(window.innerWidth);
       };
@@ -20,14 +24,8 @@ function Header({ isLoggedIn }) {
     useEffect(() => {
         window.addEventListener('resize', updateWidth);
         return () => window.removeEventListener('resize', updateWidth);
-      });
-    const isMobile = width <= 768;
-
-    // цвет хэдера меняетсяв зависимости от того на какой странице мы находимся
-    let location = useLocation().pathname;
-
-    // слушаем открыто меню-гамбургер или нет
-    const [isHamburgerMenuOpen, setHamburgerMenuOpenOpen] = useState(false);
+    });
+   
     function handleHamburgerClick() {
         setHamburgerMenuOpenOpen(!isHamburgerMenuOpen);
     }
