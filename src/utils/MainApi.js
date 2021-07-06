@@ -103,7 +103,7 @@ class Api {
 }
 
 const api = new Api({
-    url: 'https://api.kateaedon.movie.nomoredomains.icu',
+    url: 'http://localhost:3001',
     headers: {
         'Content-Type': 'application/json'
   },

@@ -96,7 +96,7 @@ function App() {
         history.push('/movies');
     })
     .catch((err) => {
-      console.log(`${err.message}`,err)
+      console.log(err);
     })
   }
 
@@ -159,12 +159,12 @@ function App() {
   function showPreloader(isDataLoading) {
     isDataLoading ? setIsPreloaderShown(true) : setIsPreloaderShown(false);
   }
-  const previousSearchInput = localStorage.getItem('searchInput');
-  const previousSearchInputSaved = localStorage.getItem('searchInputSaved');
+  //const previousSearchInput = localStorage.getItem('searchInput');
+  //const previousSearchInputSaved = localStorage.getItem('searchInputSaved');
 
-  function showNoMoviesFound(searchInput) {
-    searchInput.length === 0 ? setNoMoviesFound(true) : setNoMoviesFound(false);
-  }
+  //function showNoMoviesFound(searchInput) {
+  //  searchInput.length === 0 ? setNoMoviesFound(true) : setNoMoviesFound(false);
+  //}
     
   function getAllMovies() {
     showPreloader(true);
