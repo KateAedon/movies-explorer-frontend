@@ -183,7 +183,10 @@ function App() {
       .getSavedMovies()
       .then((res) => {
         const savedMovies = res.map((item) => { return { ...item, id: item.movieId } })
-        setSavedMovies(savedMovies);
+        const userSavedMovies = savedMovies.filter(item => item.owner === currentUser._id);
+
+        console.log(userSavedMovies, 'userSavedMovies');
+        setSavedMovies(userSavedMovies);
       })
       .catch(() => {
         setLoadingError('Во время запроса произошла ошибка. '
