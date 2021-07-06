@@ -15,7 +15,6 @@ function MoviesCardList({
     data, 
     savedMovies, 
     foundMovies,
-    noMoviesFound
  }) {
      
     const [showMovies, setShowMovies] = useState([]);
@@ -30,7 +29,7 @@ function MoviesCardList({
     }
 
     const resizeHandler = () => {
-       // const userScreenSize = window.innerWidth;
+        const userScreenSize = window.innerWidth;
         setMoreMovies(getMoviesNumber(userScreenSize));
       };
 
@@ -73,11 +72,7 @@ function MoviesCardList({
     return (
         <section className='movies-card-list'>
             <ul className='movies-card-list_list'>
-                {noMoviesFound &&
-                    <p className='movies-card-list_no-results'>Ничего не найдено</p>
-                }
-                {!noMoviesFound && 
-                showMovies.map((item) => (
+                {showMovies.map((item) => (
                     <li className='' key={item.id || item._id}>
                         <MoviesCard
                             movie={item}
