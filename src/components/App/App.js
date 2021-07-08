@@ -82,7 +82,6 @@ function App() {
       history.push('/movies')
     })
     .catch((err) => {
-      alert(err)
       console.log(err)
   })
   }
@@ -97,7 +96,6 @@ function App() {
         history.push('/movies');
     })
     .catch((err) => {
-      alert(err)
       console.log(err);
     })
   }
