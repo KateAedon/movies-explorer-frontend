@@ -101,14 +101,7 @@ function App() {
   }
 
   function handleLogOut() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('savedMovies');
-    localStorage.removeItem('allMovies');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('searchInput');
-    localStorage.removeItem('seachInputSaved');
-    localStorage.removeItem('foundMovies');
-    localStorage.removeItem('foundMoviesSaved');
+    localStorage.clear()
     setLoggedIn(false);
     setCurrentUser('');
     setData('');
@@ -123,7 +116,7 @@ function App() {
     .updateProfileInfo(data)
     .then(data => {
       setCurrentUser(data)
-      history.push('/')
+      alert('Информация успешно обновлена')
     })
     .catch((err) => {
         console.log(err)
@@ -134,8 +127,6 @@ function App() {
     if (isLoggedIn) {
       getSavedMovies();
       getAllMovies();
-      console.log(foundSavedMoveis)
-
     }
   }, [isLoggedIn])
 
@@ -159,9 +150,7 @@ function App() {
   function showPreloader(isDataLoading) {
     isDataLoading ? setIsPreloaderShown(true) : setIsPreloaderShown(false);
   }
-  //const previousSearchInput = localStorage.getItem('searchInput');
-  //const previousSearchInputSaved = localStorage.getItem('searchInputSaved');
-
+  
   //function showNoMoviesFound(searchInput) {
   //  searchInput.length === 0 ? setNoMoviesFound(true) : setNoMoviesFound(false);
   //}
@@ -219,8 +208,8 @@ function App() {
   }, [foundMovies])
 
   React.useEffect(() => {
-    localStorage.setItem('foundMoviesSaved', JSON.stringify(savedMovies))
-  }, [savedMovies])
+    localStorage.setItem('foundMoviesSaved', JSON.stringify(foundSavedMoveis))
+  }, [foundSavedMoveis])
 
   function handleMovieSearch(searchInput) {
     setIsPreloaderShown(true);
@@ -248,28 +237,33 @@ function App() {
         })
   }
 
-  function handleRemoveMovie (movie, foundMovies, foundSavedMoveis) {
-  
-  const savedMovieDelete = savedMovies.find(i => i.movieId.toString() === movie.movieId.toString());
+  function handleRemoveMovie (movie) {
+    const savedMovieDelete = savedMovies.find((item) => item.id === movie.id);
   const movieId = savedMovieDelete._id;
 
     api
         .deleteMovie(movieId)
-         .then(() => {
-           const newSavedMoviesList = savedMovies.filter((newSavedMovie) => {
-             return newSavedMovie.movieId !== savedMovieDelete.movieId;
-           });
-           setSavedMovies(newSavedMoviesList);
-           localStorage.setItem('savedMovies', JSON.stringify(newSavedMoviesList))
-         })
+        .then((res) => {
+          if (res) {
+            if (location === "/movies") {
+              const updatedSavedMovies = savedMovies.filter((movie) => { return movie._id !== movieId})
+              setSavedMovies(updatedSavedMovies)
+            } else {
+              const updatedSavedMovies = savedMovies.filter((movie) => { return movie._id !== movieId})
+              setSavedMovies(updatedSavedMovies)
+              setFoundSavedMoveis((oldArray) => 
+              oldArray.filter((movie) => movie._id !== movieId));
+            }
+            }
+          })
         .catch((err) => {
           console.error(err);
         });
     };
    
-    const isMovieSaved = (movie) => savedMovies.some(i => i.movieId.toString() === movie.movieId.toString());
+  const isMovieSaved = (movie) => savedMovies.some(i => i.movieId.toString() === movie.movieId.toString());
 
-    const handleBookmark = (movie, isMovieAdded) => (isMovieAdded ? handleRemoveMovie(movie, foundMovies, foundSavedMoveis) : handleSaveMovie(movie) );
+  const handleBookmark = (movie, isMovieAdded) => (isMovieAdded ? handleRemoveMovie(movie, foundMovies, foundSavedMoveis) : handleSaveMovie(movie) );
 
   function formatMoviesData(movies) {
     const allMovies = movies.map((movie) => {
