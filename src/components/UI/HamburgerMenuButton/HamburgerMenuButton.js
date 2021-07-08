@@ -1,10 +1,10 @@
 import React from 'react';
 import './HamburgerMenuButton.css';
 
-function HamburgerMenuButton() {
+function HamburgerMenuButton({ handleClick }) {
+
     return (
-        <button className='hamburger-menu_button' type='button' >
-        </button>
+        <button className='hamburger-menu_button' onClick={handleClick} type='button' />
     );
 }
 

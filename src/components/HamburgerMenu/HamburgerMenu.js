@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 import ProfileButton from '../UI/ProfileButton/ProfileButton';
 import './HamburgerMenu.css';
 
-function HamburgerMenu({ isOpen }) {
+function HamburgerMenu({ isOpen, handleClose }) {
     return (
         <nav className={`hamburger-menu ${isOpen ? 'hamburger-menu_is-open' : ''}`}>
-            <button  type='button' className='hamburger-menu_close-button' />          
+            <button  
+                type='button' 
+                className='hamburger-menu_close-button' 
+                onClick={handleClose} />          
             <ul className='hamburger-menu_list'>
                 <li className='hamburger-menu_list-item'>
                     <Link to='/' className='hamburger-menu_link' activeClassName='hamburger_link-active'>

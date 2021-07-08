@@ -12,7 +12,12 @@
     padding-bottom: 48px;
     box-sizing: border-box;
     background-color: #202020;
-    z-index: 10;
+    z-index: 11;
+    transform: translateX(100%);
+}
+
+.hamburger-menu_is-open {
+    transform: translateX(0);
 }
 
 .hamburger-menu_list {
