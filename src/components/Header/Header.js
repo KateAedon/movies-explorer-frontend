@@ -15,7 +15,7 @@ function Header({ isLoggedIn }) {
     const [isHamburgerMenuOpen, setHamburgerMenuOpenOpen] = useState(false);
     const isMobile = width <= 768;
 
-    let location = useLocation().pathname;
+    const location = useLocation().pathname;
     
     const updateWidth = () => {
         setWidth(window.innerWidth);

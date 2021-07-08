@@ -5,7 +5,7 @@ import './SearchForm.css';
 
 function SearchForm({ onFilterCheckbox, handleMovieSearch }) {
 
-    let location = useLocation().pathname;
+    const location = useLocation().pathname;
     const savedMoviesComponent = location === '/saved-movies';
     const moviesComponent = location === '/movies';
     const previousSearchInput = localStorage.getItem('searchInput');
